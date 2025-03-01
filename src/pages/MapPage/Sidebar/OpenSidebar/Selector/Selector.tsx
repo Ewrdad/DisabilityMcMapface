@@ -63,7 +63,7 @@ export const Selector = ({
   };
 
   return (
-    <Grid2 container spacing={2} className="pt-2">
+    <Grid2 container spacing={2} className="p-2">
       <Grid2 size={12}>
         <h3>Please Highlight</h3>
       </Grid2>

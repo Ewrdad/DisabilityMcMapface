@@ -8,10 +8,12 @@ import { Tag } from "../../Types";
 export const MapPage = () => {
   const [filters, setFilters] = useState<Tag[]>(["wheelchair"]);
   return (
-    <div>
-      <Sidebar setFilters={setFilters} />
-      <Map filters={filters} />
-      <Footer />
-    </div>
+    <>
+      <div className="z-50">
+        <Sidebar setFilters={setFilters} />
+        <Footer />
+      </div>
+      <div className="z-0">{/* <Map filters={filters} /> */}</div>
+    </>
   );
 };

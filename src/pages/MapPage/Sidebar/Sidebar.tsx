@@ -12,7 +12,7 @@ export const Sidebar = ({
 
   return (
     <div
-      className={`fixed top-0 left-0 h-screen transition-all duration-500`}
+      className={`fixed top-0 left-0 h-screen transition-all duration-500 `}
       style={{ width: isOpen ? "25%" : "2.5rem" }}
     >
       <OpenSidebar

@@ -34,22 +34,26 @@ export const OpenSidebar = ({
         anchor="left"
         open={isOpen}
       >
-        <Button
-          onClick={() => {
-            close();
-          }}
-        >
-          <Grid2 container spacing={2}>
-            <Grid2 size={10}>Help me OUT</Grid2>
-            <Grid2 size={2}>
-              {" "}
-              <MenuOpenIcon className="align-left self-end" />
+        <div className="bg-slate-200 h-full">
+          <Button
+            onClick={() => {
+              close();
+            }}
+            fullWidth
+            className="p-2 text-blue-400 hover:text-blue-800"
+          >
+            <Grid2 container spacing={2}>
+              <Grid2 size={10}>Help me OUT</Grid2>
+              <Grid2 size={2}>
+                {" "}
+                <MenuOpenIcon className="align-left self-end" />
+              </Grid2>
             </Grid2>
-          </Grid2>
-        </Button>
-        <Divider />
-        <ProfileSelector setCurrentProfile={setCurrentProfile} />
-        <Selector currentProfile={currentProfile} setFilters={setFilters} />
+          </Button>
+          <Divider />
+          <ProfileSelector setCurrentProfile={setCurrentProfile} />
+          <Selector currentProfile={currentProfile} setFilters={setFilters} />
+        </div>
       </Drawer>
     </>
   );

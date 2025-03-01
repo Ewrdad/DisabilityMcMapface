@@ -1,7 +1,7 @@
 export const Sidebar = () => {
   return (
     <div>
-      <h1>Sidebar</h1>
+      <h1 className="text-red-500">Sidebar</h1>
     </div>
   );
 };

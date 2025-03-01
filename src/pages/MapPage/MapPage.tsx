@@ -5,10 +5,10 @@ import { Footer } from "./Footer/Footer";
 import { useState } from "react";
 
 export const MapPage = () => {
-  const [filters, setFilters] = useState(["somethign"]);
+  const [filters, setFilters] = useState<string[]>(["somethign"]);
   return (
     <div>
-      <Sidebar />
+      <Sidebar setFilters={setFilters} />
       <Map />
       <Footer />
     </div>

@@ -1,9 +1,15 @@
 import { Grid2 } from "@mui/material";
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { NeedButton } from "./NeedButton/NeedButton";
 import { DisabledNeedButton } from "./NeedButton/DisabledNeedButton";
 
-export const Selector = ({ currentProfile }) => {
+export const Selector = ({
+  currentProfile,
+  setFilters,
+}: {
+  currentProfile: unknown;
+  setFilters: Dispatch<SetStateAction<string[]>>;
+}) => {
   const [symptoms, setSymptoms] = useState(currentProfile.enabled);
   const [disabledSymptoms, setDisabledSymptoms] = useState(
     currentProfile.disabled
@@ -13,6 +19,10 @@ export const Selector = ({ currentProfile }) => {
     setSymptoms(currentProfile.enabled);
     setDisabledSymptoms(currentProfile.disabled);
   }, [currentProfile]);
+
+  useEffect(() => {
+    setFilters(symptoms);
+  }, [setFilters, symptoms]);
 
   const moveUp = (index) => {
     if (index == 0) return null;

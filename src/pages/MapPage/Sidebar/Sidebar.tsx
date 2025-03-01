@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { OpenSidebar } from "./OpenSidebar/OpenSidebar";
 import { ClosedSidebar } from "./ClosedSidebar/ClosedSidebar";
 
 // Displays a sidebar on the side of the pages
-export const Sidebar = () => {
+export const Sidebar = ({
+  setFilters,
+}: {
+  setFilters: Dispatch<SetStateAction<string[]>>;
+}) => {
   const [isOpen, setIsOpen] = useState(true);
 
   return (
@@ -15,6 +19,7 @@ export const Sidebar = () => {
         close={() => {
           setIsOpen(false);
         }}
+        setFilters={setFilters}
         isOpen={isOpen}
       />
       {!isOpen && (

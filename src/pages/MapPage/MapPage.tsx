@@ -13,7 +13,9 @@ export const MapPage = () => {
         <Sidebar setFilters={setFilters} />
         <Footer />
       </div>
-      <div className="z-0">{/* <Map filters={filters} /> */}</div>
+      <div className="-z-10 w-full h-full fixed top-0 right-0">
+        <Map filters={filters} />
+      </div>
     </>
   );
 };

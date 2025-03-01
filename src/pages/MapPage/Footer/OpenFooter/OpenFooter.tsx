@@ -27,11 +27,11 @@ export const OpenFooter = ({
       sx={{
         width: "100%",
         flexShrink: 0,
-        zIndex: 9999,
+        zIndex: 500,
         position: "fixed",
         "& .MuiDrawer-paper": {
           width: "100%",
-          zIndex: 9999,
+          zIndex: 500,
           position: "fixed",
           boxSizing: "border-box",
         },
@@ -40,7 +40,7 @@ export const OpenFooter = ({
       anchor="bottom"
       open={isOpen}
     >
-      <Grid2 container spacing={2} className="pb-4 pl-2 pr-2 bg-slate-400">
+      <Grid2 container spacing={2} className="pb-4 pl-2 pr-2 bg-slate-400 z-50">
         <Grid2
           size={10}
           className="justify-center content-start text-start align-center p-8"

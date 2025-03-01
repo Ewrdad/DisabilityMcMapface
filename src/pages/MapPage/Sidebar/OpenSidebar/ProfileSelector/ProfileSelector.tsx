@@ -1,25 +1,32 @@
 import { Autocomplete, TextField } from "@mui/material";
+import { Tag } from "../../../../../Types";
 
-const profiles = {
+interface Profile {
+  label: string;
+  enabled: Tag[];
+  disabled: Tag[];
+}
+
+const profiles: Record<string, Profile> = {
   default: {
     label: "",
-    enabled: ["a", "b", "c"],
-    disabled: ["d", "e", "f"],
+    enabled: ["noise"],
+    disabled: ["wheelchair"],
   },
   you: {
     label: "You",
-    enabled: ["a", "c"],
-    disabled: ["d", "e", "f", "b"],
+    enabled: ["wheelchair"],
+    disabled: ["noise"],
   },
   all: {
     label: "All",
-    enabled: ["a", "b", "c", "d", "e", "f"],
+    enabled: ["noise", "wheelchair"],
     disabled: [],
   },
   party: {
-    label: "Party",
-    enabled: ["c", "d", "e", "f"],
-    disabled: ["a", "b"],
+    label: "None",
+    enabled: [],
+    disabled: ["noise", "wheelchair"],
   },
 };
 

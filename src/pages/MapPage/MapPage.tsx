@@ -10,7 +10,7 @@ export const MapPage = () => {
   return (
     <div>
       <Sidebar setFilters={setFilters} />
-      <Map />
+      <Map filters={filters} />
       <Footer />
     </div>
   );

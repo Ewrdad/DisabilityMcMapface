@@ -1,18 +1,16 @@
-import {
-  Drawer,
-  Divider,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemText,
-  Grid2,
-  Button,
-} from "@mui/material";
+import { Drawer, Divider, Grid2, Button } from "@mui/material";
 import MenuOpenIcon from "@mui/icons-material/MenuOpen";
 import { ProfileSelector } from "./ProfileSelector/ProfileSelector";
 import { Selector } from "./Selector/Selector";
+import { useState } from "react";
 
 export const OpenSidebar = ({ close, isOpen }) => {
+  const [currentProfile, setCurrentProfile] = useState({
+    name: "You",
+    enabled: ["a", "b", "c"],
+    disabled: ["d", "e"],
+  });
+
   return (
     <>
       <Drawer
@@ -42,8 +40,8 @@ export const OpenSidebar = ({ close, isOpen }) => {
           </Grid2>
         </Button>
         <Divider />
-        <ProfileSelector />
-        <Selector />
+        <ProfileSelector setCurrentProfile={setCurrentProfile} />
+        <Selector currentProfile={currentProfile} />
       </Drawer>
     </>
   );

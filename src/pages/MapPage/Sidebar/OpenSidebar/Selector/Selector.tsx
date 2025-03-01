@@ -1,11 +1,18 @@
-import { Button, Divider, Grid2, Paper } from "@mui/material";
-import { useState } from "react";
+import { Grid2 } from "@mui/material";
+import { useEffect, useState } from "react";
 import { NeedButton } from "./NeedButton/NeedButton";
 import { DisabledNeedButton } from "./NeedButton/DisabledNeedButton";
 
-export const Selector = () => {
-  const [symptoms, setSymptoms] = useState(["a", "b", "c"]);
-  const [disabledSymptoms, setDisabledSymptoms] = useState(["a", "b", "c"]);
+export const Selector = ({ currentProfile }) => {
+  const [symptoms, setSymptoms] = useState(currentProfile.enabled);
+  const [disabledSymptoms, setDisabledSymptoms] = useState(
+    currentProfile.disabled
+  );
+
+  useEffect(() => {
+    setSymptoms(currentProfile.enabled);
+    setDisabledSymptoms(currentProfile.disabled);
+  }, [currentProfile]);
 
   const moveUp = (index) => {
     if (index == 0) return null;

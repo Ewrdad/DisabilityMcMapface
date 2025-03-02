@@ -1,21 +1,18 @@
 import { Button, Paper } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 
-export const ClosedSidebar = ({ open }: {
-    open: () => void
-  }) => {
-
+export const ClosedSidebar = ({ open }: { open: () => void }) => {
   return (
-    <>
-      <Button onClick={() => open()}>
+    <div className="absoloute top-0 left-0 h-screen w-6">
+      <Button
+        onClick={() => open()}
+        className="bg-linear-to-t to-sky-500 from-pink-500 content-left fixed top-0 left-0 h-full w-full  "
+      >
         {" "}
-        <Paper
-          square
-          className="fixed top-0 left-0 h-screen w-10 bg-gray-100  content-left"
-        >
-          <MenuIcon className="object-center pt-2 " />
-        </Paper>
+        <div className="object-center align-middle ">
+          <MenuIcon className="object-center pt-2 self-start text-white " />
+        </div>
       </Button>
-    </>
+    </div>
   );
 };

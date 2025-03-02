@@ -24,23 +24,31 @@ const profiles: Record<string, Profile> = {
   },
 };
 
-export const ProfileSelector = ({ setCurrentProfile }: { setCurrentProfile: (profile: Profile) => void}) => {
+export const ProfileSelector = ({
+  setCurrentProfile,
+}: {
+  setCurrentProfile: (profile: Profile) => void;
+}) => {
   const options = Object.keys(profiles).map((item) => ({
     value: item,
     label: profiles[item].name,
   }));
 
   return (
-    <Autocomplete
-      options={options}
-      onChange={(_, newValue) => {
-        if (newValue == null) {
-          setCurrentProfile(profiles.default);
-          return null;
-        }
-        setCurrentProfile(profiles[newValue.value]);
-      }}
-      renderInput={(params) => <TextField {...params} label="Profile" />}
-    />
+    <div className="w-full p-2">
+      <Autocomplete
+        options={options}
+        onChange={(_, newValue) => {
+          if (newValue == null) {
+            setCurrentProfile(profiles.default);
+            return null;
+          }
+          setCurrentProfile(profiles[newValue.value]);
+        }}
+        renderInput={(params) => (
+          <TextField {...params} label="Profile" className="bg-white" />
+        )}
+      />
+    </div>
   );
 };

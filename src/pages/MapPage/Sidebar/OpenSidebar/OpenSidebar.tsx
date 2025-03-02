@@ -4,7 +4,6 @@ import { ProfileSelector } from "./ProfileSelector/ProfileSelector";
 import { Selector } from "./Selector/Selector";
 import { Dispatch, SetStateAction, useState } from "react";
 import { Profile, Tag } from "../../../../Types";
-import logo from "./logo.png";
 
 export const OpenSidebar = ({
   close,

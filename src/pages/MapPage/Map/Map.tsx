@@ -4,7 +4,7 @@ import { Tag, Location } from "../../../Types";
 import L from 'leaflet';
 import sourceSvg from '../../../assets/source.svg';
 import destinationSvg from '../../../assets/destination.svg';
-import NonFlushKerbs from "./NonFlushKerbs";
+import { NonFlushKerbs } from "./Hazards";
 
 type Props = { source?: Location, destination?: Location, filters: Tag[] };
 

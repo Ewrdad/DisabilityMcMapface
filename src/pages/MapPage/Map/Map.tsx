@@ -1,12 +1,17 @@
 import { MapContainer, Marker, TileLayer, ZoomControl } from "react-leaflet";
 import Route from "./Route";
-import { Tag, Location } from "../../../Types";
+import { Tag, Location, Hazard } from "../../../Types";
 import L from 'leaflet';
 import sourceSvg from '../../../assets/source.svg';
 import destinationSvg from '../../../assets/destination.svg';
 import { NonFlushKerbs } from "./Hazards";
 
-type Props = { source?: Location, destination?: Location, filters: Tag[] };
+type Props = {
+  source?: Location;
+  destination?: Location;
+  filters: Tag[];
+  hazards: Hazard[]
+};
 
 const defaultCenter = {
   lat: 51.4921091,
@@ -30,7 +35,8 @@ const destinationIcon = new L.Icon({
 export const Map = ({
   source,
   destination,
-  filters
+  filters,
+  hazards,
 }: Props) => {
   return (
     <div
@@ -49,7 +55,7 @@ export const Map = ({
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <ZoomControl position="topright" />
-        <NonFlushKerbs />
+        {hazards.includes("non_flush_kerbs") && <NonFlushKerbs />}
         {source && <Marker position={source} icon={sourceIcon} />}
         {destination && <Marker position={destination} icon={destinationIcon} />}
         {source && destination && <Route source={source} destination={destination} filters={filters} />}

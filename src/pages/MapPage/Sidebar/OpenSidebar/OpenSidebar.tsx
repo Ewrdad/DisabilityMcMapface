@@ -3,16 +3,18 @@ import MenuOpenIcon from "@mui/icons-material/MenuOpen";
 import { ProfileSelector } from "./ProfileSelector/ProfileSelector";
 import { Selector } from "./Selector/Selector";
 import { Dispatch, SetStateAction, useState } from "react";
-import { Profile, Tag } from "../../../../Types";
+import { Hazard, Profile, Tag } from "../../../../Types";
 
 export const OpenSidebar = ({
   close,
   isOpen,
   setFilters,
+  setHazards,
 }: {
   close: () => void;
   isOpen: boolean;
   setFilters: Dispatch<SetStateAction<Tag[]>>;
+  setHazards: Dispatch<SetStateAction<Hazard[]>>;
 }) => {
   const [currentProfile, setCurrentProfile] = useState<Profile>({
     name: "You",
@@ -59,7 +61,7 @@ export const OpenSidebar = ({
           </Button>
           <Divider />
           <ProfileSelector setCurrentProfile={setCurrentProfile} />
-          <Selector currentProfile={currentProfile} setFilters={setFilters} />
+          <Selector currentProfile={currentProfile} setFilters={setFilters} setHazards={setHazards} />
         </div>
       </Drawer>
     </>

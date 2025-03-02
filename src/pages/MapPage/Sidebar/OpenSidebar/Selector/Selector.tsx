@@ -2,15 +2,17 @@ import { Grid2 } from "@mui/material";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { NeedButton } from "./NeedButton/NeedButton";
 import { DisabledNeedButton } from "./NeedButton/DisabledNeedButton";
-import { Tag, Profile } from "../../../../../Types";
+import { Tag, Profile, Hazard } from "../../../../../Types";
 import needsData from "../../../../../../data/needs.json";
 
 export const Selector = ({
   currentProfile,
   setFilters,
+  setHazards,
 }: {
   currentProfile: Profile;
   setFilters: Dispatch<SetStateAction<Tag[]>>;
+  setHazards: Dispatch<SetStateAction<Hazard[]>>;
 }) => {
   const [needs, setNeeds] = useState(currentProfile.enabled);
   const [disabledNeeds, setDisabledNeeds] = useState(
@@ -24,6 +26,7 @@ export const Selector = ({
 
   useEffect(() => {
     setFilters(needs.flatMap(need => needsData[need].tags as Tag[]));
+    setHazards(needs.flatMap(need => needsData[need].hazards as Hazard[]));
   }, [setFilters, needs]);
 
   const moveUp = (index: number) => {

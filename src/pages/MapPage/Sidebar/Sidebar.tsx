@@ -1,13 +1,15 @@
 import { Dispatch, SetStateAction, useState } from "react";
 import { OpenSidebar } from "./OpenSidebar/OpenSidebar";
 import { ClosedSidebar } from "./ClosedSidebar/ClosedSidebar";
-import { Tag } from "../../../Types";
+import { Hazard, Tag } from "../../../Types";
 
 // Displays a sidebar on the side of the pages
 export const Sidebar = ({
   setFilters,
+  setHazards,
 }: {
   setFilters: Dispatch<SetStateAction<Tag[]>>;
+  setHazards: Dispatch<SetStateAction<Hazard[]>>;
 }) => {
   const [isOpen, setIsOpen] = useState(true);
 
@@ -21,6 +23,7 @@ export const Sidebar = ({
           setIsOpen(false);
         }}
         setFilters={setFilters}
+        setHazards={setHazards}
         isOpen={isOpen}
       />
       {!isOpen && (

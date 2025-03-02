@@ -11,12 +11,12 @@ export const MapPage = () => {
   const [destination, setDestination] = useState<Location | undefined>();
   return (
     <>
+      <div className="w-full h-full fixed top-0 right-0">
+        <Map source={source} destination={destination} filters={filters} />
+      </div>
       <div className="z-50">
         <Sidebar setFilters={setFilters} />
         <Footer setSource={setSource} setDestination={setDestination} />
-      </div>
-      <div className="-z-10 w-full h-full fixed top-0 right-0">
-        <Map source={source} destination={destination} filters={filters} />
       </div>
     </>
   );

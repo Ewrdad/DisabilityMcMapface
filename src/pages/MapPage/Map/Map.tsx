@@ -16,14 +16,14 @@ const defaultCenter = {
 const sourceIcon = new L.Icon({
     iconUrl: sourceSvg,
     iconRetinaUrl: sourceSvg,
-    popupAnchor:  [-0, -0],
+    popupAnchor: [0, 50],
     iconSize: [32, 45],
 });
 
 const destinationIcon = new L.Icon({
   iconUrl: destinationSvg,
   iconRetinaUrl: destinationSvg,
-  popupAnchor:  [-0, -0],
+  popupAnchor: [0, 50],
   iconSize: [32, 45],
 });
 

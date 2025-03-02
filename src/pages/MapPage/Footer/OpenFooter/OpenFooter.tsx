@@ -49,6 +49,7 @@ export const OpenFooter = ({
       anchor="bottom"
       open={isOpen}
     >
+      <div className="h-5 bg-linear-to-t from-pink-500/90 to-pink-500/10"></div>
       <Grid2
         container
         spacing={2}
@@ -95,7 +96,7 @@ export const OpenFooter = ({
           />
         </Grid2>
         <Grid2 size={1} className="flex items-center justify-center">
-          <DoubleArrowIcon />
+          <DoubleArrowIcon className="text-white" />
         </Grid2>
         <Grid2 size={5.5}>
           <Autocomplete

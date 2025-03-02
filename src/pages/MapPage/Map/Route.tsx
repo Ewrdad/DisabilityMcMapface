@@ -35,6 +35,7 @@ const Route = ({ source, destination, filters }: Journey) => {
       const coordinates = data.routes[0].geometry.coordinates.map((c: number[]) => [c[1], c[0]]);
       layerGroup.clearLayers();
       L.polyline(coordinates, { color: "red" }).addTo(layerGroup);
+      map.fitBounds(new L.LatLngBounds([source.lat, source.lng], [destination.lat, destination.lng]));
     };
 
     fetchRoute();

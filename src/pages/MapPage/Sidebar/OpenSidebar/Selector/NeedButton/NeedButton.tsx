@@ -1,9 +1,15 @@
-import { Button, Grid2, IconButton, Paper } from "@mui/material";
+import { Grid2, IconButton, Paper } from "@mui/material";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import CloseIcon from "@mui/icons-material/Close";
+import { Tag } from "../../../../../../Types";
 
-export const NeedButton = ({ item, moveUp, moveDown, removeFromSymptoms }) => {
+export const NeedButton = ({ item, moveUp, moveDown, removeFromSymptoms }: {
+  item: Tag;
+  moveUp: () => void;
+  moveDown: () => void;
+  removeFromSymptoms: () => void;
+}) => {
   return (
     <Paper elevation={5} className="w-full pr-4">
       <Grid2 size={12}>

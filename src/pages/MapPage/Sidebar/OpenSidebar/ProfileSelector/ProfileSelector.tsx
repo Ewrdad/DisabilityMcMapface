@@ -1,54 +1,46 @@
 import { Autocomplete, TextField } from "@mui/material";
-import { Tag } from "../../../../../Types";
-
-interface Profile {
-  label: string;
-  enabled: Tag[];
-  disabled: Tag[];
-}
+import { Profile } from "../../../../../Types";
 
 const profiles: Record<string, Profile> = {
   default: {
-    label: "",
+    name: "",
     enabled: ["noise"],
     disabled: ["wheelchair"],
   },
   you: {
-    label: "You",
+    name: "You",
     enabled: ["wheelchair"],
     disabled: ["noise"],
   },
   all: {
-    label: "All",
+    name: "All",
     enabled: ["noise", "wheelchair"],
     disabled: [],
   },
   party: {
-    label: "None",
+    name: "None",
     enabled: [],
     disabled: ["noise", "wheelchair"],
   },
 };
 
-export const ProfileSelector = ({ setCurrentProfile }) => {
-  const options = Object.keys(profiles).map((item, index) => ({
+export const ProfileSelector = ({ setCurrentProfile }: { setCurrentProfile: (profile: Profile) => void}) => {
+  const options = Object.keys(profiles).map((item) => ({
     value: item,
-    label: profiles[item].label,
+    label: profiles[item].name,
   }));
 
   return (
-    <>
-      <Autocomplete
-        options={options}
-        onChange={(event, newValue) => {
-          if (newValue == null) {
-            setCurrentProfile(profiles.default);
-            return null;
-          }
-          setCurrentProfile(profiles[newValue.value]);
-        }}
-        renderInput={(params) => <TextField {...params} label="Profile" />}
-      />
-    </>
+    <Autocomplete
+      options={options}
+      onChange={(_, newValue) => {
+        if (newValue == null) {
+          setCurrentProfile(profiles.default);
+          return null;
+        }
+        setCurrentProfile(profiles[newValue.value]);
+      }}
+      renderInput={(params) => <TextField {...params} label="Profile" />}
+    />
   );
 };

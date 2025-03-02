@@ -2,13 +2,14 @@ import { Grid2 } from "@mui/material";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { NeedButton } from "./NeedButton/NeedButton";
 import { DisabledNeedButton } from "./NeedButton/DisabledNeedButton";
+import { Tag, Profile } from "../../../../../Types";
 
 export const Selector = ({
   currentProfile,
   setFilters,
 }: {
-  currentProfile: unknown;
-  setFilters: Dispatch<SetStateAction<string[]>>;
+  currentProfile: Profile;
+  setFilters: Dispatch<SetStateAction<Tag[]>>;
 }) => {
   const [symptoms, setSymptoms] = useState(currentProfile.enabled);
   const [disabledSymptoms, setDisabledSymptoms] = useState(
@@ -24,7 +25,7 @@ export const Selector = ({
     setFilters(symptoms);
   }, [setFilters, symptoms]);
 
-  const moveUp = (index) => {
+  const moveUp = (index: number) => {
     if (index == 0) return null;
 
     const symptomsClone = [...symptoms];
@@ -35,7 +36,7 @@ export const Selector = ({
     setSymptoms(symptomsClone);
   };
 
-  const moveDown = (index) => {
+  const moveDown = (index: number) => {
     if (index == symptoms.length - 1) return null;
 
     const symptomsClone = [...symptoms];
@@ -46,7 +47,7 @@ export const Selector = ({
     setSymptoms(symptomsClone);
   };
 
-  const addToSymptoms = (index) => {
+  const addToSymptoms = (index: number) => {
     const Need = disabledSymptoms[index];
     setSymptoms((prevValue) => [...prevValue, Need]);
     setDisabledSymptoms((prevValue) => {
@@ -54,7 +55,7 @@ export const Selector = ({
     });
   };
 
-  const removeFromSymptoms = (index) => {
+  const removeFromSymptoms = (index: number) => {
     const Need = symptoms[index];
     setDisabledSymptoms((prevValue) => [...prevValue, Need]);
     setSymptoms((prevValue) => {
@@ -67,10 +68,11 @@ export const Selector = ({
       <Grid2 size={12}>
         <h3>Please Highlight</h3>
       </Grid2>
-      {symptoms.map((item, index) => {
+      {symptoms.map((item, index: number) => {
         {
           return (
             <NeedButton
+              key={item}
               item={item}
               moveUp={() => moveUp(index)}
               moveDown={() => {
@@ -86,12 +88,13 @@ export const Selector = ({
       <Grid2 size={12}>
         <h3>Don't Show</h3>
       </Grid2>
-      {disabledSymptoms.map((item, index) => (
+      {disabledSymptoms.map((item, index: number) => (
         <DisabledNeedButton
+          key={item}
           item={item}
           addToSymptoms={() => addToSymptoms(index)}
         />
-      ))}{" "}
+      ))}
     </Grid2>
   );
 };

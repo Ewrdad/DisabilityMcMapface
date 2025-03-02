@@ -3,6 +3,7 @@ import MenuOpenIcon from "@mui/icons-material/MenuOpen";
 import { ProfileSelector } from "./ProfileSelector/ProfileSelector";
 import { Selector } from "./Selector/Selector";
 import { Dispatch, SetStateAction, useState } from "react";
+import { Profile, Tag } from "../../../../Types";
 
 export const OpenSidebar = ({
   close,
@@ -11,9 +12,9 @@ export const OpenSidebar = ({
 }: {
   close: () => void;
   isOpen: boolean;
-  setFilters: Dispatch<SetStateAction<string[]>>;
+  setFilters: Dispatch<SetStateAction<Tag[]>>;
 }) => {
-  const [currentProfile, setCurrentProfile] = useState({
+  const [currentProfile, setCurrentProfile] = useState<Profile>({
     name: "You",
     enabled: ["noise"],
     disabled: ["wheelchair"],

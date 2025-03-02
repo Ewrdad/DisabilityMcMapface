@@ -1,7 +1,10 @@
 import { Button, Paper } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 
-export const ClosedSidebar = ({ open }) => {
+export const ClosedSidebar = ({ open }: {
+    open: () => void
+  }) => {
+
   return (
     <>
       <Button onClick={() => open()}>

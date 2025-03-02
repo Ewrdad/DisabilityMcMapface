@@ -81,7 +81,7 @@ export const OpenFooter = ({
               }}
               size="large"
             >
-              <ExploreOffIcon className="text-white w-5 hover:text-slate-400" />
+              <ExploreOffIcon className="text-white w-5 hover:text-slate-400" fontSize="large" />
             </IconButton>
           </div>
         </Grid2>

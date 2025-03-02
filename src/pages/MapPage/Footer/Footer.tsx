@@ -16,7 +16,7 @@ export const Footer = ({ setSource, setDestination}: Props) => {
         className=" "
         onClick={() => setIsOpen((prevValue) => !prevValue)}
       >
-        <ExploreIcon fontSize="inherit" color="info" />
+        <ExploreIcon fontSize="large" color="info" />
       </IconButton>
       <OpenFooter
         isOpen={isOpen}

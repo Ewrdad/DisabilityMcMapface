@@ -9,6 +9,7 @@ import ExploreOffIcon from "@mui/icons-material/ExploreOff";
 import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
 import { Dispatch, SetStateAction } from "react";
 import { Location } from "../../../../Types";
+import getLocation from "./getLocation";
 
 const locations = [
   "Hayden Ellis,Cardiff",
@@ -27,14 +28,6 @@ export const OpenFooter = ({
   setSource: Dispatch<SetStateAction<Location | undefined>>;
   setDestination: Dispatch<SetStateAction<Location | undefined>>;
 }) => {
-
-  const getLocation = (name: string): Location => {
-    return {
-      name,
-      lat: 51.4921091,
-      lng: -3.1835541
-    };
-  };
 
   return (
     <Drawer
@@ -79,7 +72,7 @@ export const OpenFooter = ({
           <Autocomplete
             freeSolo
             options={locations}
-            renderInput={(params) => <TextField {...params} label="From" onBlur={(e) => setSource(getLocation(e.target.value))}/>}
+            renderInput={(params) => <TextField {...params} label="From" onBlur={async (e) => setSource(await getLocation(e.target.value))}/>}
           />
         </Grid2>
         <Grid2 size={1} className="flex items-center justify-center">
@@ -89,7 +82,7 @@ export const OpenFooter = ({
           <Autocomplete
             freeSolo
             options={locations}
-            renderInput={(params) => <TextField {...params} label="To" onBlur={(e) => setDestination(getLocation(e.target.value))} />}
+            renderInput={(params) => <TextField {...params} label="To" onBlur={async (e) => setDestination(await getLocation(e.target.value))} />}
           />
         </Grid2>
       </Grid2>

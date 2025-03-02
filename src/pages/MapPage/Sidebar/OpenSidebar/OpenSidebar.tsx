@@ -4,6 +4,7 @@ import { ProfileSelector } from "./ProfileSelector/ProfileSelector";
 import { Selector } from "./Selector/Selector";
 import { Dispatch, SetStateAction, useState } from "react";
 import { Hazard, Profile, Tag } from "../../../../Types";
+import { Weather } from "./Weather/Weather";
 
 export const OpenSidebar = ({
   close,
@@ -60,6 +61,7 @@ export const OpenSidebar = ({
             </Grid2>
           </Button>
           <Divider />
+          <Weather />
           <ProfileSelector setCurrentProfile={setCurrentProfile} />
           <Selector currentProfile={currentProfile} setFilters={setFilters} setHazards={setHazards} />
         </div>

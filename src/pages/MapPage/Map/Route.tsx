@@ -21,6 +21,7 @@ const Route = ({ source, destination, filters }: Journey) => {
   layerGroup.addTo(map);
 
   const exclusions: LatLngLiteral[] = [...new Set(filters.flatMap(tag => tags[tag]))];
+  const markers = filters.flatMap(tag => ({ tag, positions: tags[tag]}));
 
   // build url params for exclusion
   const exclusionUrlParams = exclusions.length > 0 ? `&exclude=${exclusions.map(exclusion => `point(${exclusion.lng} ${exclusion.lat})`).join(',')}` : '';
@@ -34,7 +35,9 @@ const Route = ({ source, destination, filters }: Journey) => {
       const data = await response.json();
       const coordinates = data.routes[0].geometry.coordinates.map((c: number[]) => [c[1], c[0]]);
       layerGroup.clearLayers();
-      exclusions.map(exclusion => new L.Marker(exclusion).addTo(layerGroup));
+      markers.map(({ tag, positions }) =>
+        positions.map(position => new L.Marker(position).bindTooltip(tag).addTo(layerGroup))
+      );
       L.polyline(coordinates, { color: "red" }).addTo(layerGroup);
       map.fitBounds(new L.LatLngBounds([source.lat, source.lng], [destination.lat, destination.lng]));
     };

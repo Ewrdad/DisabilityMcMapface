@@ -11,11 +11,13 @@ export const OpenSidebar = ({
   isOpen,
   setFilters,
   setHazards,
+  filters,
 }: {
   close: () => void;
   isOpen: boolean;
   setFilters: Dispatch<SetStateAction<Tag[]>>;
   setHazards: Dispatch<SetStateAction<Hazard[]>>;
+  filters: Tag[];
 }) => {
   const [currentProfile, setCurrentProfile] = useState<Profile>({
     name: "You",
@@ -61,9 +63,13 @@ export const OpenSidebar = ({
             </Grid2>
           </Button>
           <Divider />
-          <Weather />
+          <Weather filters={filters} />
           <ProfileSelector setCurrentProfile={setCurrentProfile} />
-          <Selector currentProfile={currentProfile} setFilters={setFilters} setHazards={setHazards} />
+          <Selector
+            currentProfile={currentProfile}
+            setFilters={setFilters}
+            setHazards={setHazards}
+          />
         </div>
       </Drawer>
     </>

@@ -3,6 +3,9 @@ import { useState, useEffect } from "react";
 import WaterDropIcon from "@mui/icons-material/WaterDrop";
 import ThermostatIcon from "@mui/icons-material/Thermostat";
 import AirIcon from "@mui/icons-material/Air";
+import { Tag } from "../../../../../Types";
+import { Popover, Typography } from "@mui/material";
+import React from "react";
 
 const getWeatherData = async () => {
   const params = {
@@ -48,9 +51,24 @@ const getWeatherData = async () => {
   };
   return weatherData;
 };
-export const Weather = () => {
+export const Weather = ({ filters }: { filters: Tag[] }) => {
   const [weatherData, setWeatherData] = useState<unknown>(null);
   const [currentWeather, setCurrentWeather] = useState<unknown>(null);
+
+  const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
+    null
+  );
+
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? "simple-popover" : undefined;
   useEffect(() => {
     getWeatherData().then((data) => {
       setWeatherData(data);
@@ -76,6 +94,36 @@ export const Weather = () => {
   if (!currentWeather) {
     return <div>Loading...</div>;
   }
+  const TooWindy = () => {
+    if (filters.includes("elevation")) {
+      return (
+        <>
+          <AirIcon
+            className="text-red-600 hover:text-red-900"
+            onClick={handleClick}
+          />
+          <Popover
+            id={id}
+            open={open}
+            anchorEl={anchorEl}
+            onClose={handleClose}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "left",
+            }}
+          >
+            <Typography sx={{ p: 2 }}>
+              High Winds can cause previously handled slopes to be more
+              difficult
+            </Typography>
+          </Popover>
+        </>
+      );
+    }
+
+    return null;
+  };
+
   return (
     <div className="inline">
       <p className="inline p-2">
@@ -87,7 +135,7 @@ export const Weather = () => {
         {Math.round(currentWeather.precipitationProbability)}%
       </p>
       <p className="inline p-2">
-        <AirIcon />
+        {TooWindy() ? <TooWindy /> : <AirIcon />}
         {Math.round(currentWeather.windSpeed10m)}km/h
       </p>
     </div>

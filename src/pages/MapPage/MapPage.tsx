@@ -13,10 +13,19 @@ export const MapPage = () => {
   return (
     <>
       <div className="w-full h-full fixed top-0 right-0">
-        <Map source={source} destination={destination} filters={filters} hazards={hazards} />
+        <Map
+          source={source}
+          destination={destination}
+          filters={filters}
+          hazards={hazards}
+        />
       </div>
       <div className="z-50">
-        <Sidebar setFilters={setFilters} setHazards={setHazards} />
+        <Sidebar
+          setFilters={setFilters}
+          setHazards={setHazards}
+          filters={filters}
+        />
         <Footer setSource={setSource} setDestination={setDestination} />
       </div>
     </>

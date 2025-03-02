@@ -7,9 +7,11 @@ import { Hazard, Tag } from "../../../Types";
 export const Sidebar = ({
   setFilters,
   setHazards,
+  filters,
 }: {
   setFilters: Dispatch<SetStateAction<Tag[]>>;
   setHazards: Dispatch<SetStateAction<Hazard[]>>;
+  filters: Tag[];
 }) => {
   const [isOpen, setIsOpen] = useState(true);
 
@@ -25,6 +27,7 @@ export const Sidebar = ({
         setFilters={setFilters}
         setHazards={setHazards}
         isOpen={isOpen}
+        filters={filters}
       />
       {!isOpen && (
         <ClosedSidebar

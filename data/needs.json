@@ -1,0 +1,21 @@
+{
+  "wheelchair_user": {
+    "title": "Wheelchair user",
+    "tags": [
+      "wheelchair_access",
+      "elevation"
+    ],
+    "hazards": [
+      "non_flush_kerbs"
+    ]
+  },
+  "visual_sensitity": {
+    "title": "Visual sensitivity",
+    "tags": [
+      "crowded",
+      "traffic"
+    ],
+    "hazards": [
+    ]
+  }
+}

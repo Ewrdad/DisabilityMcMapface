@@ -17,8 +17,8 @@ export const OpenSidebar = ({
 }) => {
   const [currentProfile, setCurrentProfile] = useState<Profile>({
     name: "You",
-    enabled: ["noise"],
-    disabled: ["wheelchair"],
+    enabled: ["visual_sensitity"],
+    disabled: ["wheelchair_user"],
   });
 
   return (

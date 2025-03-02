@@ -2,25 +2,24 @@ import { Grid2, IconButton, Paper } from "@mui/material";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import CloseIcon from "@mui/icons-material/Close";
-import { Tag } from "../../../../../../Types";
 
 export const NeedButton = ({
-  item,
+  title,
   moveUp,
   moveDown,
-  removeFromSymptoms,
+  remove,
 }: {
-  item: Tag;
+  title: string;
   moveUp: () => void;
   moveDown: () => void;
-  removeFromSymptoms: () => void;
+  remove: () => void;
 }) => {
   return (
     <Paper elevation={5} className="w-full pr-4">
       <Grid2 size={12}>
         <Grid2 container spacing={2}>
           <Grid2 size={6} className="font-[Playwrite_US_Modern]">
-            {item}
+            {title}
           </Grid2>
           <Grid2 size={2} onClick={() => moveUp()}>
             <IconButton className="">
@@ -36,9 +35,7 @@ export const NeedButton = ({
             <IconButton>
               <CloseIcon
                 color="error"
-                onClick={() => {
-                  removeFromSymptoms();
-                }}
+                onClick={remove}
               />
             </IconButton>
           </Grid2>

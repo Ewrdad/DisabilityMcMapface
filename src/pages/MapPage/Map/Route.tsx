@@ -20,7 +20,7 @@ const Route = ({ source, destination, filters }: Journey) => {
   const map = useMap();
   layerGroup.addTo(map);
 
-  const exclusions: LatLngLiteral[] = filters.flatMap(tag => tags.dangers[tag]);
+  const exclusions: LatLngLiteral[] = [...new Set(filters.flatMap(tag => tags[tag]))];
 
   // build url params for exclusion
   const exclusionUrlParams = exclusions.length > 0 ? `&exclude=${exclusions.map(exclusion => `point(${exclusion.lng} ${exclusion.lat})`).join(',')}` : '';

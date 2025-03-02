@@ -1,4 +1,4 @@
-import { Button, Paper } from "@mui/material";
+import { Button } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 
 export const ClosedSidebar = ({ open }: { open: () => void }) => {

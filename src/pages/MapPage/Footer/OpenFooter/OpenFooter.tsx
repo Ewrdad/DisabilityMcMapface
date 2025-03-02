@@ -21,14 +21,13 @@ export const OpenFooter = ({
   isOpen,
   close,
   setSource,
-  setDestination
+  setDestination,
 }: {
   isOpen: boolean;
   close: VoidFunction;
   setSource: Dispatch<SetStateAction<Location | undefined>>;
   setDestination: Dispatch<SetStateAction<Location | undefined>>;
 }) => {
-
   return (
     <Drawer
       className="z-500"
@@ -37,18 +36,24 @@ export const OpenFooter = ({
         flexShrink: 0,
         zIndex: 500,
         position: "fixed",
+        backgroundColor: "rgba(255, 255, 255, 0)",
         "& .MuiDrawer-paper": {
           width: "100%",
           zIndex: 500,
           position: "fixed",
           boxSizing: "border-box",
+          backgroundColor: "rgba(255, 255, 255, 0)",
         },
       }}
       variant="persistent"
       anchor="bottom"
       open={isOpen}
     >
-      <Grid2 container spacing={2} className="pb-4 pl-2 pr-2 bg-slate-400 z-50">
+      <Grid2
+        container
+        spacing={2}
+        className="pb-4 pl-2 pr-2 bg-linear-to-t to-sky-500/50 from-pink-500/100  z-50"
+      >
         <Grid2
           size={10}
           className="justify-center content-start text-start align-center p-8"
@@ -72,7 +77,16 @@ export const OpenFooter = ({
           <Autocomplete
             freeSolo
             options={locations}
-            renderInput={(params) => <TextField {...params} label="From" onBlur={async (e) => setSource(await getLocation(e.target.value))}/>}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label="From"
+                className="bg-white rounded-s"
+                onBlur={async (e) =>
+                  setSource(await getLocation(e.target.value))
+                }
+              />
+            )}
           />
         </Grid2>
         <Grid2 size={1} className="flex items-center justify-center">
@@ -82,7 +96,16 @@ export const OpenFooter = ({
           <Autocomplete
             freeSolo
             options={locations}
-            renderInput={(params) => <TextField {...params} label="To" onBlur={async (e) => setDestination(await getLocation(e.target.value))} />}
+            className="bg-white rounded-s"
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label="To"
+                onBlur={async (e) =>
+                  setDestination(await getLocation(e.target.value))
+                }
+              />
+            )}
           />
         </Grid2>
       </Grid2>

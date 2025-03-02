@@ -4,7 +4,12 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import CloseIcon from "@mui/icons-material/Close";
 import { Tag } from "../../../../../../Types";
 
-export const NeedButton = ({ item, moveUp, moveDown, removeFromSymptoms }: {
+export const NeedButton = ({
+  item,
+  moveUp,
+  moveDown,
+  removeFromSymptoms,
+}: {
   item: Tag;
   moveUp: () => void;
   moveDown: () => void;
@@ -14,7 +19,9 @@ export const NeedButton = ({ item, moveUp, moveDown, removeFromSymptoms }: {
     <Paper elevation={5} className="w-full pr-4">
       <Grid2 size={12}>
         <Grid2 container spacing={2}>
-          <Grid2 size={6}>{item}</Grid2>
+          <Grid2 size={6} className="font-[Playwrite_US_Modern]">
+            {item}
+          </Grid2>
           <Grid2 size={2} onClick={() => moveUp()}>
             <IconButton className="">
               <KeyboardArrowUpIcon />

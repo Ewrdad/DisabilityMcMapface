@@ -46,7 +46,11 @@ export const ProfileSelector = ({
           setCurrentProfile(profiles[newValue.value]);
         }}
         renderInput={(params) => (
-          <TextField {...params} label="Profile" className="bg-white" />
+          <TextField
+            {...params}
+            label="Profile"
+            className="bg-white rounded-s"
+          />
         )}
       />
     </div>

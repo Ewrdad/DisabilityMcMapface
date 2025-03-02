@@ -36,7 +36,7 @@ export const OpenSidebar = ({
         open={isOpen}
         className=""
       >
-        <div className="bg-linear-to-t to-sky-500 from-pink-500 h-full">
+        <div className="bg-linear-to-t to-sky-500 from-pink-500 h-full text-white">
           <Button
             onClick={() => {
               close();

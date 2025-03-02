@@ -15,6 +15,12 @@ const locations = [
   "52, Maindy Road, Cardiff",
   "Cardiff Castle, Cardiff",
   "Cardiff Bay, Cardiff",
+  "Travelodge, Cardiff Bay",
+  "Cardiff Central Station, Cardiff",
+  "Cardiff Museum, Cardiff",
+  "St Mary Street, Cardiff",
+  "The Hayes, Cardiff",
+  "Welsh Millennium Centre, Cardiff",
 ];
 
 export const OpenFooter = ({

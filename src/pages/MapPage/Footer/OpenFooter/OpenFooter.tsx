@@ -12,9 +12,9 @@ import { Location } from "../../../../Types";
 import getLocation from "./getLocation";
 
 const locations = [
-  "Hayden Ellis,Cardiff",
-  "Cardiff Castle,Cardiff",
-  "Cardiff University,Cardiff",
+  "52, Maindy Road, Cardiff",
+  "Cardiff Castle, Cardiff",
+  "Cardiff Bay, Cardiff",
 ];
 
 export const OpenFooter = ({

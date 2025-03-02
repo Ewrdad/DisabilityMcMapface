@@ -3,6 +3,7 @@ import Route from "./Route";
 import { Tag, Location } from "../../../Types";
 import L from 'leaflet';
 import marker from '../../../assets/react.svg';
+import NonFlushKerbs from "./NonFlushKerbs";
 
 type Props = { source?: Location, destination?: Location, filters: Tag[] };
 
@@ -47,6 +48,7 @@ export const Map = ({
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <ZoomControl position="topright" />
+        <NonFlushKerbs />
         {source && <Marker position={source} icon={sourceIcon} />}
         {destination && <Marker position={destination} icon={destinationIcon} />}
         {source && destination && <Route source={source} destination={destination} filters={filters} />}

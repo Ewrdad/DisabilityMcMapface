@@ -1,54 +1,22 @@
-# React + TypeScript + Vite
+# Help Me Out
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An app to help people get out of the house and where they want, regardless of ability, need or personal difficulties
 
-Currently, two official plugins are available:
+## Origins
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Originated at NHS hackday 2025 - Cardiff, where it won the judges vote and a second place amongst the community. Although winning matters much less than the countless amount of support and passionate people coming together believing in a better world for people with access needs. Did enjoy the tshirt.
 
-## Expanding the ESLint configuration
+## How can I help?
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+We are currently working on finalising our setup but if you're interested you can help us in many ways
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### What we need
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Developers, disabled people, able people, physical therapists, people with a beating heart and most importantly people who want to make a difference.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### What can I do now?
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+If you're stuck you can help by looking at our Kanban board
+<https://tree.taiga.io/project/ewrdad-helpmeout/kanban>
+
+Or help us get more data into the open source community through street complete

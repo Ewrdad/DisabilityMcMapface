@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { fetchWeatherApi } from "openmeteo";
 import { useState, useEffect } from "react";
 import WaterDropIcon from "@mui/icons-material/WaterDrop";
@@ -52,8 +53,8 @@ const getWeatherData = async () => {
   return weatherData;
 };
 export const Weather = ({ filters }: { filters: Tag[] }) => {
-  const [weatherData, setWeatherData] = useState<unknown>(null);
-  const [currentWeather, setCurrentWeather] = useState<unknown>(null);
+  const [weatherData, setWeatherData] = useState<any>(null);
+  const [currentWeather, setCurrentWeather] = useState<any>(null);
 
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
     null

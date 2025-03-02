@@ -49,7 +49,7 @@ export const OpenFooter = ({
       anchor="bottom"
       open={isOpen}
     >
-      <div className="h-5 bg-linear-to-t from-pink-500/90 to-pink-500/10"></div>
+      <div className="h-5 bg-linear-to-t from-pink-500/90 to-pink-500/0"></div>
       <Grid2
         container
         spacing={2}

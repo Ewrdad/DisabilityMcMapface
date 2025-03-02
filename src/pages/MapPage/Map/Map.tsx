@@ -2,8 +2,9 @@ import { MapContainer, Marker, TileLayer, ZoomControl } from "react-leaflet";
 import Route from "./Route";
 import { Tag, Location } from "../../../Types";
 import L from 'leaflet';
-import marker from '../../../assets/react.svg';
-import NonFlushKerbs from "./NonFlushKerbs";
+import sourceSvg from '../../../assets/source.svg';
+import destinationSvg from '../../../assets/destination.svg';
+import { NonFlushKerbs } from "./Hazards";
 
 type Props = { source?: Location, destination?: Location, filters: Tag[] };
 
@@ -13,16 +14,16 @@ const defaultCenter = {
 };
 
 const sourceIcon = new L.Icon({
-    iconUrl: marker,
-    iconRetinaUrl: marker,
-    popupAnchor:  [-0, -0],
+    iconUrl: sourceSvg,
+    iconRetinaUrl: sourceSvg,
+    popupAnchor: [0, 50],
     iconSize: [32, 45],
 });
 
 const destinationIcon = new L.Icon({
-  iconUrl: marker,
-  iconRetinaUrl: marker,
-  popupAnchor:  [-0, -0],
+  iconUrl: destinationSvg,
+  iconRetinaUrl: destinationSvg,
+  popupAnchor: [0, 50],
   iconSize: [32, 45],
 });
 

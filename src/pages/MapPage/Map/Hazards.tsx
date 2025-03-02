@@ -1,7 +1,7 @@
-import { Marker, Tooltip } from "react-leaflet";
 import nonFlushKerbs from "../../../../data/non-flush-kerbs.json"
 import warningIcon from "../../../assets/warning-icon.svg"
 import L from "leaflet";
+import Markers from "./Markers";
 
 const icon = new L.Icon({
   iconUrl: warningIcon,
@@ -9,7 +9,7 @@ const icon = new L.Icon({
   iconSize: new L.Point(20, 20),
 });
 
-const markers = nonFlushKerbs.features.map(feature => {
+const nonFlushKerbMarkers = nonFlushKerbs.features.map(feature => {
   const point = feature.geometry.coordinates;
   return {
     position: {
@@ -21,16 +21,4 @@ const markers = nonFlushKerbs.features.map(feature => {
   };
 });
 
-const NonFlushKerbs = () => {
-  return (
-    <>
-      {markers.map(marker =>
-        <Marker key={marker.id} position={marker.position} icon={icon}>
-          <Tooltip>{marker.title}</Tooltip>
-        </Marker>
-      )}
-    </>
-  )
-}
-
-export default NonFlushKerbs;
+export const NonFlushKerbs = () => <Markers markers={nonFlushKerbMarkers} icon={icon} />

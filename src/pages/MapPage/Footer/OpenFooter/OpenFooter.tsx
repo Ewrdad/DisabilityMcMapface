@@ -52,24 +52,29 @@ export const OpenFooter = ({
       <Grid2
         container
         spacing={2}
-        className="pb-4 pl-2 pr-2 bg-linear-to-t to-sky-500/50 from-pink-500/100  z-50"
+        className="pb-4 pl-2 pr-2 bg-linear-to-t from-sky-500/90 to-pink-500/100  z-50"
       >
         <Grid2
           size={10}
           className="justify-center content-start text-start align-center p-8"
         >
-          <h1>Help me OUT</h1>
+          <p className="text-white font-[Playwrite_US_Modern] inline text-3xl">
+            Help me{" "}
+          </p>
+          <p className="italic inline font-[Playwrite_US_Trad] text-white text-3xl">
+            out
+          </p>
         </Grid2>
         <Grid2 size={2}>
-          <div className="p-8 rounded-lg relative w-full content-end text-right">
+          <div className="p-8 rounded-lg relative w-full content-end text-right text-white ">
             <IconButton
-              className="content-end text-gray-500 hover:text-gray-700"
+              className="content-end text-white "
               onClick={() => {
                 close();
               }}
               size="large"
             >
-              <ExploreOffIcon />
+              <ExploreOffIcon className="text-white w-5 hover:text-slate-400" />
             </IconButton>
           </div>
         </Grid2>

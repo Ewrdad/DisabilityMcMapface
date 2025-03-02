@@ -45,11 +45,11 @@ export const OpenSidebar = ({
             className="p-2 text-blue-400 hover:text-blue-800"
           >
             <Grid2 container spacing={2} className="text-white">
-              <Grid2 size={10} className="">
-                <p className="text-white font-[Playwrite_US_Modern]">
+              <Grid2 size={10} className="inline">
+                <p className="text-white font-[Playwrite_US_Modern] inline">
                   Help me{" "}
-                  <p className="italic inline font-[Playwrite_US_Trad]">out</p>
                 </p>
+                <p className="italic inline font-[Playwrite_US_Trad]">out</p>
               </Grid2>
               <Grid2 size={2}>
                 {" "}

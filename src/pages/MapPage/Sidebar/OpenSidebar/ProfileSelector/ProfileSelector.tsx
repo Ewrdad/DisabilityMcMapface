@@ -4,23 +4,23 @@ import { Profile } from "../../../../../Types";
 const profiles: Record<string, Profile> = {
   default: {
     name: "",
-    enabled: ["noise"],
-    disabled: ["wheelchair"],
+    enabled: ["visual_sensitity"],
+    disabled: ["wheelchair_user"],
   },
   you: {
     name: "You",
-    enabled: ["wheelchair"],
-    disabled: ["noise"],
+    enabled: ["wheelchair_user"],
+    disabled: ["visual_sensitity"],
   },
   all: {
     name: "All",
-    enabled: ["noise", "wheelchair"],
+    enabled: ["visual_sensitity", "wheelchair_user"],
     disabled: [],
   },
   party: {
     name: "None",
     enabled: [],
-    disabled: ["noise", "wheelchair"],
+    disabled: ["visual_sensitity", "wheelchair_user"],
   },
 };
 

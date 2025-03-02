@@ -6,7 +6,7 @@ import { useState } from "react";
 import { Tag, Location } from "../../Types";
 
 export const MapPage = () => {
-  const [filters, setFilters] = useState<Tag[]>(["wheelchair"]);
+  const [filters, setFilters] = useState<Tag[]>([]);
   const [source, setSource] = useState<Location | undefined>();
   const [destination, setDestination] = useState<Location | undefined>();
   return (

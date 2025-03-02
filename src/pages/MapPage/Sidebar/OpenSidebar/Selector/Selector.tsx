@@ -3,6 +3,7 @@ import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { NeedButton } from "./NeedButton/NeedButton";
 import { DisabledNeedButton } from "./NeedButton/DisabledNeedButton";
 import { Tag, Profile } from "../../../../../Types";
+import needsData from "../../../../../../data/needs.json";
 
 export const Selector = ({
   currentProfile,
@@ -11,54 +12,54 @@ export const Selector = ({
   currentProfile: Profile;
   setFilters: Dispatch<SetStateAction<Tag[]>>;
 }) => {
-  const [symptoms, setSymptoms] = useState(currentProfile.enabled);
-  const [disabledSymptoms, setDisabledSymptoms] = useState(
+  const [needs, setNeeds] = useState(currentProfile.enabled);
+  const [disabledNeeds, setDisabledNeeds] = useState(
     currentProfile.disabled
   );
 
   useEffect(() => {
-    setSymptoms(currentProfile.enabled);
-    setDisabledSymptoms(currentProfile.disabled);
+    setNeeds(currentProfile.enabled);
+    setDisabledNeeds(currentProfile.disabled);
   }, [currentProfile]);
 
   useEffect(() => {
-    setFilters(symptoms);
-  }, [setFilters, symptoms]);
+    setFilters(needs.flatMap(need => needsData[need].tags as Tag[]));
+  }, [setFilters, needs]);
 
   const moveUp = (index: number) => {
     if (index == 0) return null;
 
-    const symptomsClone = [...symptoms];
-    const ObjectHolder = symptoms[index - 1];
-    symptomsClone[index - 1] = symptoms[index];
-    symptomsClone[index] = ObjectHolder;
+    const needsClone = [...needs];
+    const ObjectHolder = needs[index - 1];
+    needsClone[index - 1] = needs[index];
+    needsClone[index] = ObjectHolder;
 
-    setSymptoms(symptomsClone);
+    setNeeds(needsClone);
   };
 
   const moveDown = (index: number) => {
-    if (index == symptoms.length - 1) return null;
+    if (index == needs.length - 1) return null;
 
-    const symptomsClone = [...symptoms];
-    const ObjectHolder = symptoms[index + 1];
-    symptomsClone[index + 1] = symptoms[index];
-    symptomsClone[index] = ObjectHolder;
+    const needsClone = [...needs];
+    const ObjectHolder = needs[index + 1];
+    needsClone[index + 1] = needs[index];
+    needsClone[index] = ObjectHolder;
 
-    setSymptoms(symptomsClone);
+    setNeeds(needsClone);
   };
 
-  const addToSymptoms = (index: number) => {
-    const Need = disabledSymptoms[index];
-    setSymptoms((prevValue) => [...prevValue, Need]);
-    setDisabledSymptoms((prevValue) => {
+  const addToNeeds = (index: number) => {
+    const need = disabledNeeds[index];
+    setNeeds((prevValue) => [...prevValue, need]);
+    setDisabledNeeds((prevValue) => {
       return prevValue.filter((_, metaindex) => metaindex !== index);
     });
   };
 
-  const removeFromSymptoms = (index: number) => {
-    const Need = symptoms[index];
-    setDisabledSymptoms((prevValue) => [...prevValue, Need]);
-    setSymptoms((prevValue) => {
+  const removeFromNeeds = (index: number) => {
+    const need = needs[index];
+    setDisabledNeeds((prevValue) => [...prevValue, need]);
+    setNeeds((prevValue) => {
       return prevValue.filter((_, metaindex) => metaindex !== index);
     });
   };
@@ -66,33 +67,33 @@ export const Selector = ({
   return (
     <Grid2 container spacing={2} className="p-2">
       <Grid2 size={12}>
-        <h3>Please Highlight</h3>
+        <h3>My needs</h3>
       </Grid2>
-      {symptoms.map((item, index: number) => {
+      {needs.map((item, index: number) => {
         {
           return (
             <NeedButton
               key={item}
-              item={item}
+              title={needsData[item].title}
               moveUp={() => moveUp(index)}
               moveDown={() => {
                 moveDown(index);
               }}
-              removeFromSymptoms={() => {
-                removeFromSymptoms(index);
+              remove={() => {
+                removeFromNeeds(index);
               }}
             />
           );
         }
       })}
       <Grid2 size={12}>
-        <h3>Don't Show</h3>
+        <h3>Choose needs</h3>
       </Grid2>
-      {disabledSymptoms.map((item, index: number) => (
+      {disabledNeeds.map((item, index: number) => (
         <DisabledNeedButton
           key={item}
-          item={item}
-          addToSymptoms={() => addToSymptoms(index)}
+          title={needsData[item].title}
+          add={() => addToNeeds(index)}
         />
       ))}
     </Grid2>

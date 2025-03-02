@@ -32,6 +32,7 @@ export const OpenSidebar = ({
           width: "20%",
           flexShrink: 0,
           "& .MuiDrawer-paper": {
+            backgroundColor: "transparent",
             width: "20%",
             boxSizing: "border-box",
           },
@@ -41,7 +42,7 @@ export const OpenSidebar = ({
         open={isOpen}
         className=""
       >
-        <div className="bg-linear-to-t to-sky-500 from-pink-500 h-full text-white">
+        <div className="bg-linear-to-t to-sky-500/90 from-pink-500 h-full text-white">
           <Button
             onClick={() => {
               close();
@@ -51,14 +52,27 @@ export const OpenSidebar = ({
           >
             <Grid2 container spacing={2} className="text-white">
               <Grid2 size={10} className="inline">
-                <p className="text-white font-[Playwrite_US_Modern] inline">
-                  Help me{" "}
-                </p>
-                <p className="italic inline font-[Playwrite_US_Trad]">out</p>
+                <h1 className="text-xs">
+                  <div className="text-white font-[Playwrite_US_Modern] text-sm inline">
+                    Help me{" "}
+                  </div>
+                  <div className="italic inline font-[Playwrite_US_Trad] text-sm">
+                    out
+                  </div>
+                </h1>
               </Grid2>
-              <Grid2 size={2}>
+              <Grid2 size={1} className=""></Grid2>
+              <Grid2
+                size={1}
+                justifyContent="right"
+                alignContent="right"
+                className="justify-end align-right"
+              >
                 {" "}
-                <MenuOpenIcon className="align-left self-end" />
+                <MenuOpenIcon
+                  className="align-left self-end h-full"
+                  fontSize="medium"
+                />
               </Grid2>
             </Grid2>
           </Button>

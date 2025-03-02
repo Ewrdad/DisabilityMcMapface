@@ -6,7 +6,7 @@ export const ClosedSidebar = ({ open }: { open: () => void }) => {
     <div className="absoloute top-0 left-0 h-screen w-6">
       <Button
         onClick={() => open()}
-        className="bg-linear-to-t to-sky-500 from-pink-500 content-left fixed top-0 left-0 h-full w-full"
+        className="bg-linear-to-t to-sky-500/90 from-pink-500 content-left fixed top-0 left-0 h-full w-full"
       >
         {" "}
         <div className="object-center align-middle">

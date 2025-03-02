@@ -35,7 +35,7 @@ export const ProfileSelector = ({
   }));
 
   return (
-    <div className="w-full p-2">
+    <div className="w-full p-2 text-black">
       <Autocomplete
         options={options}
         onChange={(_, newValue) => {
@@ -49,7 +49,7 @@ export const ProfileSelector = ({
           <TextField
             {...params}
             label="Profile"
-            className="bg-white rounded-s"
+            className="bg-white rounded-s text-black"
           />
         )}
       />

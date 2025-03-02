@@ -4,6 +4,7 @@ import { ProfileSelector } from "./ProfileSelector/ProfileSelector";
 import { Selector } from "./Selector/Selector";
 import { Dispatch, SetStateAction, useState } from "react";
 import { Profile, Tag } from "../../../../Types";
+import logo from "./logo.png";
 
 export const OpenSidebar = ({
   close,
@@ -34,8 +35,9 @@ export const OpenSidebar = ({
         variant="persistent"
         anchor="left"
         open={isOpen}
+        className=""
       >
-        <div className="bg-slate-200 h-full">
+        <div className="bg-linear-to-t to-sky-500 from-pink-500 h-full">
           <Button
             onClick={() => {
               close();
@@ -43,8 +45,13 @@ export const OpenSidebar = ({
             fullWidth
             className="p-2 text-blue-400 hover:text-blue-800"
           >
-            <Grid2 container spacing={2}>
-              <Grid2 size={10}>Help me OUT</Grid2>
+            <Grid2 container spacing={2} className="text-white">
+              <Grid2 size={10} className="">
+                <p className="text-white font-[Playwrite_US_Modern]">
+                  Help me{" "}
+                  <p className="italic inline font-[Playwrite_US_Trad]">out</p>
+                </p>
+              </Grid2>
               <Grid2 size={2}>
                 {" "}
                 <MenuOpenIcon className="align-left self-end" />

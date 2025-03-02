@@ -1,4 +1,4 @@
-import { MapContainer, Marker, TileLayer } from "react-leaflet";
+import { MapContainer, Marker, TileLayer, ZoomControl } from "react-leaflet";
 import Route from "./Route";
 import { LatLngLiteral } from "leaflet";
 import { Tag } from "../../../Types";
@@ -17,11 +17,13 @@ export const Map = ({ filters }: { filters: Tag[] }) => {
         center={source}
         zoom={17}
         scrollWheelZoom={false}
+        zoomControl={false}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
+        <ZoomControl position="topright" />
         <Marker position={source} />
         <Route source={source} destination={destination} filters={filters} />
       </MapContainer>

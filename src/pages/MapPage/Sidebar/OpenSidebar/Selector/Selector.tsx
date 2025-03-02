@@ -70,8 +70,9 @@ export const Selector = ({
   return (
     <Grid2 container spacing={2} className="p-2">
       <Grid2 size={12}>
-        <h3>My needs</h3>
+        <h3 className="text-2xl">My needs</h3>
       </Grid2>
+      {needs.length == 0 && <div className="block w-full text-center italic">Select your needs</div>}
       {needs.map((item, index: number) => {
         {
           return (
@@ -90,7 +91,7 @@ export const Selector = ({
         }
       })}
       <Grid2 size={12}>
-        <h3>Choose needs</h3>
+        <h3 className="text-2xl">Possible needs</h3>
       </Grid2>
       {disabledNeeds.map((item, index: number) => (
         <DisabledNeedButton

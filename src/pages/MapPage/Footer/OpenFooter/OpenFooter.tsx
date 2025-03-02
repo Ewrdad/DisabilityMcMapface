@@ -13,7 +13,7 @@ import getLocation from "./getLocation";
 
 const locations = [
   "52, Maindy Road, Cardiff",
-  "Cardiff Castle, Cardiff",
+  "Cardiff Castle, Castle Street, Cardiff",
   "Cardiff Bay, Cardiff",
 ];
 

@@ -7,6 +7,8 @@ import {
 } from "@mui/material";
 import ExploreOffIcon from "@mui/icons-material/ExploreOff";
 import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
+import { Dispatch, SetStateAction } from "react";
+import { Location } from "../../../../Types";
 
 const locations = [
   "Hayden Ellis,Cardiff",
@@ -17,13 +19,26 @@ const locations = [
 export const OpenFooter = ({
   isOpen,
   close,
+  setSource,
+  setDestination
 }: {
   isOpen: boolean;
-  close: () => void;
+  close: VoidFunction;
+  setSource: Dispatch<SetStateAction<Location | undefined>>;
+  setDestination: Dispatch<SetStateAction<Location | undefined>>;
 }) => {
+
+  const getLocation = (name: string): Location => {
+    return {
+      name,
+      lat: 51.4921091,
+      lng: -3.1835541
+    };
+  };
+
   return (
     <Drawer
-      className="z-500  "
+      className="z-500"
       sx={{
         width: "100%",
         flexShrink: 0,
@@ -50,7 +65,7 @@ export const OpenFooter = ({
         <Grid2 size={2}>
           <div className="p-8 rounded-lg relative w-full content-end text-right">
             <IconButton
-              className="content-end text-gray-500 hover:text-gray-700 "
+              className="content-end text-gray-500 hover:text-gray-700"
               onClick={() => {
                 close();
               }}
@@ -62,18 +77,19 @@ export const OpenFooter = ({
         </Grid2>
         <Grid2 size={5.5}>
           <Autocomplete
+            freeSolo
             options={locations}
-            renderInput={(params) => <TextField {...params} label="From" />}
+            renderInput={(params) => <TextField {...params} label="From" onBlur={(e) => setSource(getLocation(e.target.value))}/>}
           />
         </Grid2>
         <Grid2 size={1} className="flex items-center justify-center">
           <DoubleArrowIcon />
         </Grid2>
         <Grid2 size={5.5}>
-          {" "}
           <Autocomplete
+            freeSolo
             options={locations}
-            renderInput={(params) => <TextField {...params} label="To" />}
+            renderInput={(params) => <TextField {...params} label="To" onBlur={(e) => setDestination(getLocation(e.target.value))} />}
           />
         </Grid2>
       </Grid2>

@@ -1,9 +1,11 @@
 import { IconButton } from "@mui/material";
 import ExploreIcon from "@mui/icons-material/Explore";
-import { useState } from "react";
+import { ComponentProps, useState } from "react";
 import { OpenFooter } from "./OpenFooter/OpenFooter";
 
-export const Footer = () => {
+type Props = Pick<ComponentProps<typeof OpenFooter>, "setSource" | "setDestination">;
+
+export const Footer = ({ setSource, setDestination}: Props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -21,6 +23,8 @@ export const Footer = () => {
         close={() => {
           setIsOpen(false);
         }}
+        setSource={setSource}
+        setDestination={setDestination}
       />
     </div>
   );

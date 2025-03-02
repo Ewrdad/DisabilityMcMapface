@@ -1,12 +1,35 @@
 import { MapContainer, Marker, TileLayer, ZoomControl } from "react-leaflet";
 import Route from "./Route";
-import { LatLngLiteral } from "leaflet";
-import { Tag } from "../../../Types";
+import { Tag, Location } from "../../../Types";
+import L from 'leaflet';
+import marker from '../../../assets/react.svg';
 
-const source: LatLngLiteral = { lat: 51.4921091, lng: -3.1835541 };
-const destination: LatLngLiteral = { lat: 51.4823, lng: -3.1812 };
+type Props = { source?: Location, destination?: Location, filters: Tag[] };
 
-export const Map = ({ filters }: { filters: Tag[] }) => {
+const defaultCenter = {
+  lat: 51.4921091,
+  lng: -3.1835541
+};
+
+const sourceIcon = new L.Icon({
+    iconUrl: marker,
+    iconRetinaUrl: marker,
+    popupAnchor:  [-0, -0],
+    iconSize: [32, 45],
+});
+
+const destinationIcon = new L.Icon({
+  iconUrl: marker,
+  iconRetinaUrl: marker,
+  popupAnchor:  [-0, -0],
+  iconSize: [32, 45],
+});
+
+export const Map = ({
+  source,
+  destination,
+  filters
+}: Props) => {
   return (
     <div
       className="-z-10 w-full h-full fixed top-0 right-0"
@@ -14,7 +37,7 @@ export const Map = ({ filters }: { filters: Tag[] }) => {
     >
       <MapContainer
         className="h-full w-full z-0"
-        center={source}
+        center={source ?? defaultCenter}
         zoom={17}
         scrollWheelZoom={false}
         zoomControl={false}
@@ -24,8 +47,9 @@ export const Map = ({ filters }: { filters: Tag[] }) => {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <ZoomControl position="topright" />
-        <Marker position={source} />
-        <Route source={source} destination={destination} filters={filters} />
+        {source && <Marker position={source} icon={sourceIcon} />}
+        {destination && <Marker position={destination} icon={destinationIcon} />}
+        {source && destination && <Route source={source} destination={destination} filters={filters} />}
       </MapContainer>
     </div>
   );

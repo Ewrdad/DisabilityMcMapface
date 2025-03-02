@@ -2,11 +2,11 @@ import { useEffect } from "react";
 import { useMap } from "react-leaflet";
 import L, { LatLngLiteral } from "leaflet";
 import tags from "../../../../data/tags.json"
-import { Tag } from "../../../Types";
+import { Tag, Location } from "../../../Types";
 
 type Journey = {
-  source: LatLngLiteral,
-  destination: LatLngLiteral,
+  source: Location,
+  destination: Location,
   filters: Tag[],
 };
 
